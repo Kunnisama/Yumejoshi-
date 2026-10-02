@@ -15,7 +15,7 @@
             --dark-pink: #9e4b6c;
             --text-color: #e6e1e5;
             --text-muted: #b8afb8;
-            --border-lace: #2a2230;
+            --border-lace: #3a2a3f;
         }
 
         body {
@@ -27,6 +27,29 @@
             line-height: 1.8;
             background-image: radial-gradient(#2a1f2d 1px, transparent 1px);
             background-size: 20px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 🌸 แก้ไขเอฟเฟกต์ดอกไม้ร่วงให้อยู่ด้านหลังสุด */
+        .petal {
+            position: fixed;
+            top: -20px;
+            pointer-events: none; /* ไม่บังการคลิก */
+            z-index: 1;           /* อยู่ด้านหลังการ์ดเนื้อหา */
+            user-select: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* Gothic Header */
@@ -36,6 +59,7 @@
             background: linear-gradient(180deg, #1f1422 0%, var(--bg-color) 100%);
             border-bottom: 2px dashed var(--pink-accent);
             position: relative;
+            z-index: 10; /* ดันเนื้อหาให้อยู่เหนือเอฟเฟกต์ */
         }
 
         .ribbon-tag {
@@ -84,37 +108,51 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 30px 20px;
+            position: relative;
+            z-index: 10; /* ดันให้อยู่เหนือเอฟเฟกต์ร่วง */
         }
 
         .card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-lace);
+            border: 2px solid var(--border-lace);
             border-radius: 16px;
             padding: 30px;
-            margin-bottom: 35px;
+            margin-bottom: 45px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             position: relative;
         }
 
-        /* Lace border decoration */
+        /* 🎀 ลูกไม้เเละสร้อยมุกประดับรอบการ์ด */
         .card::before {
-            content: "✽ 𝒴𝓊𝓂ℯ 𝒫𝒶𝒾𝓇 ✽";
+            content: "📑 𝒴𝓊𝓂ℯ 𝒫𝒶𝒾𝓇 🎀";
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--dark-pink);
             color: var(--pink-soft);
-            font-size: 0.75em;
-            padding: 2px 15px;
-            border-radius: 10px;
+            font-size: 0.8em;
+            padding: 2px 18px;
+            border-radius: 12px;
             font-family: 'Charm', cursive;
+            box-shadow: 0 0 8px rgba(242, 166, 196, 0.4);
+            border: 1px solid var(--pink-accent);
         }
+
+        /* ตกแต่งโบว์ตรงมุมการ์ด */
+        .card-bow-left, .card-bow-right {
+            position: absolute;
+            top: -12px;
+            font-size: 1.2em;
+        }
+        .card-bow-left { left: 15px; }
+        .card-bow-right { right: 15px; }
 
         /* Image Containers */
         .img-box {
             text-align: center;
             margin: 25px 0;
+            position: relative;
         }
 
         .img-box img {
@@ -123,19 +161,8 @@
             border-radius: 12px;
             border: 2px solid var(--pink-accent);
             box-shadow: 0 0 15px rgba(242, 166, 196, 0.2);
-        }
-
-        .img-placeholder {
-            width: 100%;
-            height: 250px;
-            background: #231c29;
-            border: 2px dashed var(--dark-pink);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--pink-accent);
-            font-style: italic;
+            position: relative;
+            z-index: 2;
         }
 
         /* Headings & Text */
@@ -143,7 +170,7 @@
             font-family: 'Charm', cursive;
             color: var(--pink-accent);
             font-size: 1.8em;
-            border-bottom: 1px solid var(--dark-pink);
+            border-bottom: 1px dashed var(--dark-pink);
             padding-bottom: 8px;
             margin-top: 0;
             display: flex;
@@ -161,13 +188,6 @@
             margin: 20px 0;
             border-radius: 8px;
             color: var(--pink-soft);
-        }
-
-        /* Character Perspective Split Layout */
-        .perspective-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
         }
 
         .nickname-list {
@@ -202,6 +222,20 @@
             font-size: 0.8em;
         }
 
+        /* 🎬 ส่วนใส่ GIF ด้านล่างสุด */
+        .gif-container {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+        .gif-container img {
+            max-width: 280px;
+            width: 100%;
+            border-radius: 15px;
+            border: 2px solid var(--pink-accent);
+            box-shadow: 0 0 12px rgba(242, 166, 196, 0.3);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -209,6 +243,8 @@
             font-size: 0.85em;
             color: var(--text-muted);
             border-top: 1px solid var(--border-lace);
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
@@ -230,10 +266,10 @@
 
         <!-- 🖼️ รูปภาพคู่หลัก -->
         <div class="card">
+            <span class="card-bow-left">🎀</span>
+            <span class="card-bow-right">🎀</span>
             <div class="img-box">
-                <!-- เปลี่ยน src เป็น URL รูปคู่ของคุณได้เลยค่ะ -->
-              <img src="https://i.postimg.cc/v8kXZ6ZQ/Untitled537-20260504165705-(3).png" alt="รูปภาพ">
-                <!-- ตัวอย่างการใส่รูปจริง: <img src="URL_รูปภาพ.jpg" alt="Dazai x Yukio"> -->
+                <img src="https://i.postimg.cc/v8kXZ6ZQ/Untitled537-20260504165705-(3).png" alt="รูปภาพคู่หลัก">
             </div>
 
             <div class="quote-box">
@@ -246,6 +282,8 @@
 
         <!-- 🖤 Relationship Dynamic -->
         <div class="card">
+            <span class="card-bow-left">🖤</span>
+            <span class="card-bow-right">🖤</span>
             <h2 class="section-title">🎀 Dynamic</h2>
             <p>ทั้งคู่ไม่มีใครเป็นแสงสว่างให้กันเลย ทั้งสองคนนี้จะเหมือนความมืดมิดที่กลืนกินทั้งคู่ แต่ถึงแบบนั้นทั้งสองคนก็เลือกที่จะยอมรับมันและก้าวต่อไปพร้อมๆ กัน</p>
             <p>สำหรับพวกเขา ไม่มีใครเป็นแสงสว่างให้กัน ทั้งคู่ต่างเป็นความมืดมิดที่อยู่ท่ามกลางความอ้างว้าง ไม่มีดวงอาทิตย์ ดวงดาว หรือแสงสว่างใดๆ ที่ทั้งคู่เห็นในตัวอีกฝ่าย แต่ถึงแบบนั้นทั้งสองก็ยังเลือกที่จะอยู่เคียงข้างกันเสมอ เพราะอย่างน้อย ความอบอุ่น และความรู้สึกมากกว่าที่ช่วยให้อย่างน้อยก็ทำให้ทั้งคู่รู้สึก <strong>'ยังเป็นมนุษย์'</strong></p>
@@ -254,11 +292,12 @@
 
         <!-- 🥀 Dazai Osamu Section -->
         <div class="card">
+            <span class="card-bow-left">🥀</span>
+            <span class="card-bow-right">🥀</span>
             <h2 class="section-title">🖤 Dazai's Perspective</h2>
             
             <div class="img-box">
-                <!-- เปลี่ยน src เป็น URL รูป Dazai -->
-                <img src="https://i.postimg.cc/pLZDz9RS/8b9bd95dd05347948d72e2bb79e1ffb1.jpg"alt="รูปภาพ">✦
+                <img src="https://i.postimg.cc/pLZDz9RS/8b9bd95dd05347948d72e2bb79e1ffb1.jpg" alt="Dazai Osamu">
             </div>
 
             <p><strong>มุมมองของ Dazai ต่อ Yukio:</strong><br>
@@ -276,11 +315,12 @@
 
         <!-- 🌸 Fujikawa Yukio Section -->
         <div class="card">
+            <span class="card-bow-left">🌸</span>
+            <span class="card-bow-right">🌸</span>
             <h2 class="section-title">🌸 Yukio's Perspective</h2>
             
             <div class="img-box">
-                <!-- เปลี่ยน src เป็น URL รูป Yukio -->
-                <img src="https://i.postimg.cc/3rV9xDxd/IMG-7341-(4).png"alt="รูปภาพ">✦
+                <img src="https://i.postimg.cc/3rV9xDxd/IMG-7341-(4).png" alt="Fujikawa Yukio">
             </div>
 
             <p><strong>มุมมองของ Yukio ต่อ Dazai:</strong><br>
@@ -296,6 +336,8 @@
 
         <!-- 📜 Timeline Section -->
         <div class="card">
+            <span class="card-bow-left">⌛</span>
+            <span class="card-bow-right">⌛</span>
             <h2 class="section-title">⌛ Timeline</h2>
             
             <div class="timeline-item">
@@ -311,26 +353,31 @@
             </div>
         </div>
 
+        <!-- 🎬 GIF Section ด้านล่างสุด -->
+        <div class="https://www.image2url.com/r2/default/gifs/1790940496374-9993fd03-8152-4e7b-a6f6-0c1668d5ec61.gif">
+            <!-- 🔗 นำ URL รูปภาพ GIF ของคุณมาเปลี่ยนใส่ใน src ได้เลยครับ -->
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJhMnJuMDZwOWIxbW03cnB3YzIxdmdxbnllMzQxeDZpdWtlZWJnMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L3X9GvpmPZXlDOIZtB/giphy.gif" alt="Dazai x Yukio GIF">
+        </div>
+
     </div>
 
     <footer>
         ✦ Dazai Osamu x Fujikawa Yukio | Non-Sharing ✦
     </footer>
 
-    
-    <!-- 🌸 JavaScript สคริปต์สร้างเอฟเฟกต์ดอกไม้ร่วง -->
+    <!-- 🌸 JavaScript สำหรับสร้างเอฟเฟกต์ดอกไม้ร่วง -->
     <script>
         function createPetal() {
             const petal = document.createElement('div');
             petal.classList.add('petal');
             
-            // สุ่มสัญลักษณ์กลีบดอกไม้ (กลีบชมพู / โบว์ / ดอกไม้)
-            const petals = ['🌸', '🌷', '🎀', '🌸'];
+            // สุ่มสัญลักษณ์กลีบดอกไม้และโบว์
+            const petals = ['🌸', '🌷', '🎀', '🌸', '🖤'];
             petal.innerText = petals[Math.floor(Math.random() * petals.length)];
             
             // สุ่มตำแหน่งเริ่มต้นและขนาด
             petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.fontSize = (Math.random() * 12 + 10) + 'px';
+            petal.style.fontSize = (Math.random() * 12 + 12) + 'px';
             
             // สุ่มความเร็วและระยะเวลาในการร่วง
             const duration = Math.random() * 3 + 4; // 4-7 วินาที
@@ -344,7 +391,7 @@
             }, duration * 1000);
         }
 
-        // สร้างกลีบดอกไม้ร่วงอย่างต่อเนื่องทุกๆ 350 มิลลิวินาที
+        // สร้างกลีบดอกไม้ร่วงอย่างต่อเนื่อง
         setInterval(createPetal, 350);
     </script>
 
