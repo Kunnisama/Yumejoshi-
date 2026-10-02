@@ -3,173 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dazai Osamu x Fujikawa Yukio 🖤🌸</title>
+    <title>Dazai Osamu x Fujikawa Yukio 🎀🖤</title>
     <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Global & Theme Settings */
+        /* Global & Pink Background Settings */
         :root {
-            --bg-color: #0f0d11;
-            --card-bg: #1a161f;
-            --pink-accent: #f2a6c4;
-            --pink-soft: #fbe3ed;
-            --dark-pink: #9e4b6c;
-            --text-color: #e6e1e5;
-            --text-muted: #b8afb8;
-            --border-lace: #2a2230;
+            --bg-pink: #fce8f0;          /* สีพื้นหลังหลักชมพู */
+            --bg-pink-soft: #fbf0f5;     
+            --card-white: #ffffff;       /* กล่องสีขาว */
+            --card-black: #1a161c;       /* กล่องสีดำ/โกธิค */
+            --accent-black: #2d2430;     /* สีดำเน้น */
+            --accent-pink: #f28ab2;      /* สีชมพูเน้น */
+            --text-dark: #382c3e;        /* สีตัวหนังสือบนพื้นขาว */
+            --text-light: #f5ebf2;       /* สีตัวหนังสือบนพื้นดำ */
+            --border-lace: #e0b8cc;
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-pink);
+            color: var(--text-dark);
             margin: 0;
             padding: 0;
             line-height: 1.8;
-            background-image: radial-gradient(#2a1f2d 1px, transparent 1px);
-            background-size: 20px 20px;
+            /* ลายพื้นหลังตารางกริดอ่อนๆ สไตล์การ์ด */
+            background-image: 
+                linear-gradient(rgba(242, 138, 178, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(242, 138, 178, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px;
+            overflow-x: hidden;
         }
 
-        /* Gothic Header */
+        /* 🌸 เอฟเฟกต์ดอกไม้ร่วง */
+        .petal {
+            position: fixed;
+            top: -10px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 🎀 Header สไตล์ริบบิ้น & ลูกไม้ */
         header {
             text-align: center;
-            padding: 60px 20px 40px;
-            background: linear-gradient(180deg, #1f1422 0%, var(--bg-color) 100%);
-            border-bottom: 2px dashed var(--pink-accent);
+            padding: 50px 20px 40px;
+            background: #ffffff;
+            border-bottom: 4px solid var(--accent-black);
             position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .ribbon-tag {
-            display: inline-block;
-            background: var(--dark-pink);
-            color: #fff;
-            padding: 6px 18px;
-            border-radius: 20px;
+        /* ลายลูกไม้ประดับด้านล่าง Header */
+        header::after {
+            content: "❖ ── ✦ ── 🎀 ── ✦ ── ❖";
+            display: block;
+            margin-top: 15px;
             font-size: 0.9em;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(242, 166, 196, 0.3);
-            margin-bottom: 15px;
+            color: var(--accent-pink);
+            letter-spacing: 3px;
+        }
+
+        .ribbon-badge {
+            display: inline-block;
+            background: var(--accent-black);
+            color: #ffffff;
+            padding: 6px 22px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            position: relative;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            border: 1px dashed var(--accent-pink);
         }
 
         h1.title {
             font-family: 'Charm', cursive;
-            font-size: 2.6em;
-            color: var(--pink-accent);
-            margin: 10px 0;
-            text-shadow: 0 0 8px rgba(242, 166, 196, 0.4);
+            font-size: 2.8em;
+            color: var(--accent-black);
+            margin: 15px 0 5px;
+            text-shadow: 2px 2px 0px var(--accent-pink);
         }
 
         .fandom {
-            font-size: 1.1em;
-            color: var(--pink-soft);
-            letter-spacing: 2px;
+            font-size: 1.05em;
+            color: #66526e;
+            font-weight: 600;
         }
 
         .tags {
             margin-top: 15px;
             font-size: 0.85em;
-            color: var(--text-muted);
         }
 
         .tags span {
             display: inline-block;
-            background: rgba(242, 166, 196, 0.1);
-            border: 1px solid var(--dark-pink);
-            padding: 3px 10px;
-            border-radius: 12px;
+            background: var(--bg-pink-soft);
+            border: 1px solid var(--border-lace);
+            color: var(--accent-black);
+            padding: 4px 12px;
+            border-radius: 15px;
             margin: 3px;
         }
 
-        /* Container & Cards with Lace effect */
+        /* 🎀 Layout Container */
         .container {
-            max-width: 800px;
+            max-width: 820px;
             margin: 0 auto;
             padding: 30px 20px;
         }
 
+        /* Card สไตล์พื้นขาว แซมลูกไม้และริบบิ้น */
         .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-lace);
-            border-radius: 16px;
+            background-color: var(--card-white);
+            border: 2px solid #ffffff;
+            outline: 1px dashed var(--border-lace);
+            border-radius: 18px;
             padding: 30px;
             margin-bottom: 35px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 20px rgba(184, 120, 150, 0.15);
             position: relative;
+            transition: transform 0.3s ease;
         }
 
-        /* Lace border decoration */
-        .card::before {
-            content: "✽ 𝒴𝓊𝓂ℯ 𝒫𝒶𝒾𝓇 ✽";
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Card โทนสีดำ Gothic (สำหรับฝั่ง Dazai / Dynamic) */
+        .card.card-dark {
+            background-color: var(--card-black);
+            color: var(--text-light);
+            outline: 1px dashed var(--accent-pink);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 🎀 โบว์ประดับมุมกล่อง */
+        .card-bow {
             position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--dark-pink);
-            color: var(--pink-soft);
-            font-size: 0.75em;
-            padding: 2px 15px;
-            border-radius: 10px;
-            font-family: 'Charm', cursive;
+            top: -15px;
+            right: 25px;
+            font-size: 1.5em;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
 
-        /* Image Containers */
+        /* 🖼️ กล่องใส่รูปภาพ */
         .img-box {
             text-align: center;
-            margin: 25px 0;
+            margin: 20px 0;
         }
 
         .img-box img {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
-            border: 2px solid var(--pink-accent);
-            box-shadow: 0 0 15px rgba(242, 166, 196, 0.2);
+            border-radius: 14px;
+            border: 3px solid var(--accent-pink);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .img-placeholder {
             width: 100%;
-            height: 250px;
-            background: #231c29;
-            border: 2px dashed var(--dark-pink);
-            border-radius: 12px;
+            height: 240px;
+            background: #faf2f6;
+            border: 2px dashed var(--accent-pink);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--pink-accent);
+            color: #8c687c;
             font-style: italic;
         }
 
-        /* Headings & Text */
+        .card-dark .img-placeholder {
+            background: #26202b;
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+        }
+
+        /* หัวข้อส่วนต่างๆ */
         h2.section-title {
             font-family: 'Charm', cursive;
-            color: var(--pink-accent);
-            font-size: 1.8em;
-            border-bottom: 1px solid var(--dark-pink);
+            color: var(--accent-black);
+            font-size: 1.9em;
+            border-bottom: 2px dotted var(--accent-pink);
             padding-bottom: 8px;
             margin-top: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
+        .card-dark h2.section-title {
+            color: var(--accent-pink);
+            border-bottom-color: #4a3852;
+        }
+
+        /* กล่อง Quote คำพูด */
         .quote-box {
             font-style: italic;
             text-align: center;
-            background: rgba(242, 166, 196, 0.05);
-            border-left: 3px solid var(--pink-accent);
-            border-right: 3px solid var(--pink-accent);
-            padding: 20px;
+            background: #fff5f9;
+            border: 1px solid var(--border-lace);
+            border-left: 4px solid var(--accent-pink);
+            border-right: 4px solid var(--accent-pink);
+            padding: 18px;
             margin: 20px 0;
-            border-radius: 8px;
-            color: var(--pink-soft);
+            border-radius: 10px;
+            color: #4a3443;
+            line-height: 1.9;
         }
 
-        /* Character Perspective Split Layout */
-        .perspective-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
+        /* ชิปรายการชื่อเรียก */
         .nickname-list {
             list-style: none;
             padding-left: 0;
@@ -177,29 +231,35 @@
 
         .nickname-list li {
             display: inline-block;
-            background: #281e2d;
-            border: 1px solid var(--dark-pink);
-            color: var(--pink-soft);
-            padding: 4px 12px;
+            background: #fbebf2;
+            border: 1px solid var(--border-lace);
+            color: var(--accent-black);
+            padding: 4px 14px;
             border-radius: 15px;
-            margin: 3px;
+            margin: 4px 2px;
             font-size: 0.9em;
+        }
+
+        .card-dark .nickname-list li {
+            background: #2d2333;
+            border-color: var(--accent-pink);
+            color: var(--text-light);
         }
 
         /* Timeline Items */
         .timeline-item {
             position: relative;
-            padding-left: 25px;
+            padding-left: 28px;
             margin-bottom: 20px;
-            border-left: 2px solid var(--dark-pink);
+            border-left: 2px dashed var(--accent-pink);
         }
 
         .timeline-item::before {
-            content: "🌸";
+            content: "🎀";
             position: absolute;
-            left: -12px;
-            top: 0;
-            font-size: 0.8em;
+            left: -13px;
+            top: -2px;
+            font-size: 0.85em;
         }
 
         /* Footer */
@@ -207,17 +267,20 @@
             text-align: center;
             padding: 30px;
             font-size: 0.85em;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-lace);
+            background: #ffffff;
+            color: var(--accent-black);
+            border-top: 3px double var(--accent-pink);
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
+    <!-- 🌸 Header -->
     <header>
-        <div class="ribbon-tag">✦ NON - SHARING ✦</div>
+        <div class="ribbon-badge">🎀 NON - SHARING 🎀</div>
         <h1 class="title">Dazai Osamu x Fujikawa Yukio</h1>
-        <div class="fandom">Bungou Stray Dogs</div>
+        <div class="fandom">✦ Bungou Stray Dogs ✦</div>
         <div class="tags">
             <span>#DaYuki</span>
             <span>#DaYu</span>
@@ -228,12 +291,12 @@
 
     <div class="container">
 
-        <!-- 🖼️ รูปภาพคู่หลัก -->
+        <!-- 🖼️ รูปคู่หลัก & คำนิยาม -->
         <div class="card">
+            <div class="card-bow">🎀</div>
             <div class="img-box">
-                <!-- เปลี่ยน src เป็น URL รูปคู่ของคุณได้เลยค่ะ -->
-              <img src="https://i.postimg.cc/HWR3k7kx/mi-m-ch-x-730-20260303122631-(1).png" alt="รูปภาพ">
-                <!-- ตัวอย่างการใส่รูปจริง: <img src="URL_รูปภาพ.jpg" alt="Dazai x Yukio"> -->
+                <!-- ใส่ URL รูปคู่หลักตรงนี้ --> <img src="https://i.postimg.cc/v8kXZ6ZQ/Untitled537-20260504165705-(3).png" alt="รูปภาพ">
+ ✦</div>
             </div>
 
             <div class="quote-box">
@@ -244,27 +307,29 @@
             <p>ทุกสิ่งหมุนเวียนเป็นวัฏจักร ความรักและความเจ็บปวดผลิบานและร่วงโรยในช่วงเวลาเดียวกัน ราวกับโลกนี้ไม่เคยหยุดนิ่ง และไม่เคยให้คำตอบแก่ใครอย่างแท้จริง สิ่งเหล่านั้นมีให้เห็นปนกันไปประปรายจนน่าอดสูใจ อนิจจา สิ่งเหล่านั่นกลับอยู่เพียงชั่วครู่ก่อนจะมลายหายไปและหวนคืนกลับมาใหม่ ราวกับเป็นวัฏจักรที่ไม่รู้จักจบสิ้น</p>
         </div>
 
-        <!-- 🖤 Relationship Dynamic -->
-        <div class="card">
-            <h2 class="section-title">🎀 Dynamic</h2>
+        <!-- 🖤 Relationship Dynamic (กล่องสีดำโกธิค) -->
+        <div class="card card-dark">
+            <div class="card-bow">🖤</div>
+            <h2 class="section-title">🖤 Dynamic</h2>
             <p>ทั้งคู่ไม่มีใครเป็นแสงสว่างให้กันเลย ทั้งสองคนนี้จะเหมือนความมืดมิดที่กลืนกินทั้งคู่ แต่ถึงแบบนั้นทั้งสองคนก็เลือกที่จะยอมรับมันและก้าวต่อไปพร้อมๆ กัน</p>
-            <p>สำหรับพวกเขา ไม่มีใครเป็นแสงสว่างให้กัน ทั้งคู่ต่างเป็นความมืดมิดที่อยู่ท่ามกลางความอ้างว้าง ไม่มีดวงอาทิตย์ ดวงดาว หรือแสงสว่างใดๆ ที่ทั้งคู่เห็นในตัวอีกฝ่าย แต่ถึงแบบนั้นทั้งสองก็ยังเลือกที่จะอยู่เคียงข้างกันเสมอ เพราะอย่างน้อย ความอบอุ่น และความรู้สึกมากกว่าที่ช่วยให้อย่างน้อยก็ทำให้ทั้งคู่รู้สึก <strong>'ยังเป็นมนุษย์'</strong></p>
+            <p>สำหรับพวกเขา ไม่มีใครเป็นแสงสว่างให้กัน ทั้งคู่ต่างเป็นความมืดมิดที่อยู่ท่ามกลางความอ้างว้าง ไม่มีดวงอาทิตย์ ดวงดาว หรือแสงสว่างใดๆ ที่ทั้งคู่เห็นในตัวอีกฝ่าย แต่ถึงแบบนั้นทั้งสองก็ยังเลือกที่จะอยู่เคียงข้างกันเสมอ เพราะอย่างน้อย ความอบอุ่น และความรู้สึกมากกว่าที่ช่วยให้อย่างน้อยก็ทำให้ทั้งคู่รู้สึก <strong style="color: var(--accent-pink);">'ยังเป็นมนุษย์'</strong></p>
             <p>แน่นอนว่าในความสัมพันธ์ของทั้งคู่ก็ต่างมีความ Toxic ในตัวทั้งคู่เองเช่นกัน เพราะต่างฝ่ายต่างก็ไม่รู้วิธีที่จะรักษากันและกันเอาไว้ รู้แค่ว่าจะต้องทำยังไงเพื่อรั้งเอาไว้ ต่อให้จะเป็นการกักขังหรืออะไรก็ตาม แต่ถึงแบบนั้น Dazai กับ Yukio ก็เข้าใจกันดี ไม่มีใครโกรธใครที่ทำแบบนั้น เพราะพวกเขามีสิ่งที่ขาดหายไปและก็ไม่รู้ว่าจะต้องทำยังไงเพื่อหามันมา ทั้งคู่รับรู้บางอย่างไม่จำเป็นต้องเยียวยากันก็ได้ ในเมื่อเราเลือกที่จะก้าวผ่านมันไปด้วยกันก็พอ แค่นั้นก็เพียงพอสำหรับเธอและเขาแล้ว....</p>
         </div>
 
-        <!-- 🥀 Dazai Osamu Section -->
-        <div class="card">
+        <!-- 🖤 Dazai Osamu Section (กล่องสีดำโกธิค) -->
+        <div class="card card-dark">
+            <div class="card-bow">🌹</div>
             <h2 class="section-title">🖤 Dazai's Perspective</h2>
             
             <div class="img-box">
-                <!-- เปลี่ยน src เป็น URL รูป Dazai -->
-                <img src="https://i.postimg.cc/pLZDz9RS/8b9bd95dd05347948d72e2bb79e1ffb1.jpg"alt="รูปภาพ">✦
+                <!-- ใส่ URL รูป Dazai -->
+                 <img src="https://i.postimg.cc/pLZDz9RS/8b9bd95dd05347948d72e2bb79e1ffb1.jpg"alt="รูปภาพ"> ✦</div>
             </div>
 
             <p><strong>มุมมองของ Dazai ต่อ Yukio:</strong><br>
             สำหรับเขาแล้ว เธอนั้นสวยงามราวกับไม่มีชีวิต เหมือนกับรูปปั้นที่ภายนอกนั้นสง่างามแต่กลับไร้ความรู้สึกเมื่อสัมผัสถึงเนื้อข้างใน มีเพียงแค่เศษหินปูนและความหยาบกร้านของมัน เขารักเธอ นั้นคือเรื่องจริง แม้ว่าเขาจะไม่เคยยอมรับมันมาก่อน เขารู้ดีว่าเขานั้นบิดเบี้ยวมากแค่ไหน การดึงเธอไว้ก็มีแต่รั้งเธอลงมาภายใต้ก้นเหวลึกไปพร้อมกับเขา เขาจึงอยากที่จะปล่อยให้เธอไปจากเขาสักที แต่ก็ไม่เคยมีวันนั้นมาถึง</p>
 
-            <p><strong>ชื่อที่ Dazai ใช้เรียก Yukio:</strong></p>
+            <p><strong style="color: var(--accent-pink);">ชื่อที่ Dazai ใช้เรียก Yukio:</strong></p>
             <ul class="nickname-list">
                 <li>ยูกิจัง</li>
                 <li>ยูกิโอะจัง</li>
@@ -274,13 +339,14 @@
             </ul>
         </div>
 
-        <!-- 🌸 Fujikawa Yukio Section -->
+        <!-- 🌸 Fujikawa Yukio Section (กล่องสีขาวโบว์ชมพู) -->
         <div class="card">
+            <div class="card-bow">🎀</div>
             <h2 class="section-title">🌸 Yukio's Perspective</h2>
             
             <div class="img-box">
-                <!-- เปลี่ยน src เป็น URL รูป Yukio -->
-                <img src="https://i.postimg.cc/3rV9xDxd/IMG-7341-(4).png"alt="รูปภาพ">✦
+                <!-- ใส่ URL รูป Yukio -->
+                <img src="https://i.postimg.cc/3rV9xDxd/IMG-7341-(4).png"alt="รูปภาพ"> ✦</div>
             </div>
 
             <p><strong>มุมมองของ Yukio ต่อ Dazai:</strong><br>
@@ -294,8 +360,9 @@
             </ul>
         </div>
 
-        <!-- 📜 Timeline Section -->
+        <!-- ⌛ Timeline Section -->
         <div class="card">
+            <div class="card-bow">📜</div>
             <h2 class="section-title">⌛ Timeline</h2>
             
             <div class="timeline-item">
@@ -314,8 +381,38 @@
     </div>
 
     <footer>
-        ✦ Dazai Osamu x Fujikawa Yukio | Non-Sharing ✦
+        ❖ Dazai Osamu x Fujikawa Yukio | Non-Sharing ❖
     </footer>
+
+    <!-- 🌸 JavaScript สคริปต์สร้างเอฟเฟกต์ดอกไม้ร่วง -->
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            // สุ่มสัญลักษณ์กลีบดอกไม้ (กลีบชมพู / กลีบดำ / ดอกไม้)
+            const petals = ['🌸', '💮', '🖤', '🌸', '✨'];
+            petal.innerText = petals[Math.floor(Math.random() * petals.length)];
+            
+            // สุ่มตำแหน่งเริ่มต้นและขนาด
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = (Math.random() * 12 + 10) + 'px';
+            
+            // สุ่มความเร็วและระยะเวลาในการร่วง
+            const duration = Math.random() * 3 + 4; // 4-7 วินาที
+            petal.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(petal);
+            
+            // ลบกลีบดอกไม้เมื่อร่วงพ้นหน้าจอ
+            setTimeout(() => {
+                petal.remove();
+            }, duration * 1000);
+        }
+
+        // สร้างกลีบดอกไม้ร่วงอย่างต่อเนื่องทุกๆ 350 มิลลิวินาที
+        setInterval(createPetal, 350);
+    </script>
 
 </body>
 </html>
