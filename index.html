@@ -59,7 +59,7 @@
             background: linear-gradient(180deg, #1f1422 0%, var(--bg-color) 100%);
             border-bottom: 2px dashed var(--pink-accent);
             position: relative;
-            z-index: 10; /* ดันเนื้อหาให้อยู่เหนือเอฟเฟกต์ */
+            z-index: 10;
         }
 
         .ribbon-tag {
@@ -109,7 +109,7 @@
             margin: 0 auto;
             padding: 30px 20px;
             position: relative;
-            z-index: 10; /* ดันให้อยู่เหนือเอฟเฟกต์ร่วง */
+            z-index: 10;
         }
 
         .card {
@@ -120,6 +120,7 @@
             margin-bottom: 45px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
             position: relative;
+            box-sizing: border-box;
         }
 
         /* 🎀 ลูกไม้เเละสร้อยมุกประดับรอบการ์ด */
@@ -147,6 +148,17 @@
         }
         .card-bow-left { left: 15px; }
         .card-bow-right { right: 15px; }
+
+        /* ✨ เทคนิคการลบพื้นหลังรูปภาพด้วย CSS Blend Modes */
+        .remove-black-bg {
+            mix-blend-mode: screen; /* สำหรับลบพื้นหลังสีดำของภาพลูกไม้/โบว์ */
+            pointer-events: none;
+        }
+
+        .remove-white-bg {
+            mix-blend-mode: multiply; /* สำหรับลบพื้นหลังสีขาวของภาพสร้อยไข่มุก */
+            pointer-events: none;
+        }
 
         /* Image Containers */
         .img-box {
@@ -222,18 +234,22 @@
             font-size: 0.8em;
         }
 
-        /* 🎬 ส่วนใส่ GIF ด้านล่างสุด */
+        /* 🎬 ส่วนใส่ GIF ด้านล่างสุด (ปรับให้ขนาดพอดีกับการ์ดและไม่เกินความกว้างหน้าเว็บ) */
         .gif-container {
             text-align: center;
-            margin: 30px 0 10px;
+            margin: 25px 0 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .gif-container img {
-            max-width: 280px;
-            width: 100%;
-            border-radius: 15px;
+            max-width: 100%; /* ปรับให้พอดีกับความกว้างของการ์ด ไม่ล้นหน้าจอ */
+            height: auto;
+            border-radius: 12px;
             border: 2px solid var(--pink-accent);
-            box-shadow: 0 0 12px rgba(242, 166, 196, 0.3);
+            box-shadow: 0 0 15px rgba(242, 166, 196, 0.3);
+            display: block;
+            margin: 0 auto;
         }
 
         /* Footer */
@@ -351,12 +367,11 @@
             <div class="timeline-item">
                 <p><strong>Present Era:</strong> ปัจจุบัน ทั้งสองก็ยังคงอาศัยอยู่ด้วยกันเช่นเคย แม้ว่า Yukio จะไม่ได้ทำงานในสำนักงานนักสืบ แต่เธอก็อาศัยอยู่ที่หอพักกับดาไซเหมือนเมื่อก่อน</p>
             </div>
-        </div>
 
-        <!-- 🎬 GIF Section ด้านล่างสุด -->
-        <div class="https://www.image2url.com/r2/default/gifs/1790940496374-9993fd03-8152-4e7b-a6f6-0c1668d5ec61.gif">
-            <!-- 🔗 นำ URL รูปภาพ GIF ของคุณมาเปลี่ยนใส่ใน src ได้เลยครับ -->
-            <img src="https://www.image2url.com/r2/default/gifs/1790940496374-9993fd03-8152-4e7b-a6f6-0c1668d5ec61.gif" alt="Dazai x Yukio GIF">
+            <!-- 🎬 GIF Section (ย้ายเข้ามาอยู่ในโครงสร้างการ์ด และปรับขนาดให้พอดีกว้าง 100%) -->
+            <div class="gif-container">
+                <img src="https://www.image2url.com/r2/default/gifs/1790940496374-9993fd03-8152-4e7b-a6f6-0c1668d5ec61.gif" alt="Dazai x Yukio GIF">
+            </div>
         </div>
 
     </div>
